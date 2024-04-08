@@ -2,6 +2,8 @@ package robots.src.models;
 
 import java.util.Observable;
 
+/** Абстрактный класс, представляющий объект на поле игры.
+*/
 public abstract class Entity extends Observable {
 
     protected volatile double positionX;

@@ -7,6 +7,11 @@ import java.awt.*;
 import robots.src.models.Robot;
 import robots.src.models.Target;
 
+
+/**
+ * ПерсональнаяЗадачаЛандышев
+ * Класс просчёта движения робота, выделенный из исходного GameMovementModelling
+ */
 public class GameMovementModelling{
     private Robot playerRobot = new Robot(100,100,0,0.1,0.01);
 
