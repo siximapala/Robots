@@ -1,4 +1,4 @@
-package gui;
+package robots.src.gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -14,7 +14,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import log.Logger;
+import robots.src.log.Logger;
 
 /**
  * Что требуется сделать:
@@ -44,6 +44,10 @@ public class MainApplicationFrame extends JFrame
         GameWindow gameWindow = new GameWindow();
         gameWindow.setSize(400,  400);
         addWindow(gameWindow);
+
+        CoordinatesWindow coordinatesWindow = new CoordinatesWindow(gameWindow);
+        coordinatesWindow.setSize(400,400);
+        addWindow(coordinatesWindow);
 
         setJMenuBar(generateMenuBar());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
