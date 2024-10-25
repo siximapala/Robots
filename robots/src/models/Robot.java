@@ -2,6 +2,9 @@ package robots.src.models;
 
 import java.awt.*;
 
+/**
+ * Класс, представляющий робота для поля игры.
+ */
 public class Robot extends Entity{
 
     public Robot(int positionX, int positionY, double robotDirection, double maxVelocity, double maxAngularVelocity) {
