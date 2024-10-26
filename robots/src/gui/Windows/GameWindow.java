@@ -1,4 +1,7 @@
-package robots.src.gui;
+package robots.src.gui.Windows;
+
+import robots.src.gui.GameVisualizer;
+import robots.src.gui.MainApplicationFrame;
 
 import java.awt.BorderLayout;
 
@@ -7,20 +10,25 @@ import javax.swing.JPanel;
 
 public class GameWindow extends JInternalFrame
 {
-    private final GameVisualizer visualizer;
+    private GameVisualizer gameVisualizer;
     private String windowTitle = MainApplicationFrame.getResourceBundle().getString("GameWindowFrameText");
 
     public GameWindow()
     {
         super(MainApplicationFrame.getResourceBundle().getString("GameWindowFrameText"), true, true, true, true);
-        visualizer = new GameVisualizer();
+        gameVisualizer = new GameVisualizer();
         JPanel panel = new JPanel(new BorderLayout());
-        panel.add(visualizer, BorderLayout.CENTER);
+        panel.add(gameVisualizer, BorderLayout.CENTER);
         getContentPane().add(panel);
         pack();
     }
 
     public GameVisualizer getVisualizer() {
-        return visualizer;
+        return gameVisualizer;
     }
+
+    public void setVisualizer(GameVisualizer gameVisualizer){
+        this.gameVisualizer = gameVisualizer;
+    }
+
 }

@@ -1,5 +1,6 @@
-package robots.src.gui;
+package robots.src.gui.Windows;
 
+import robots.src.gui.MainApplicationFrame;
 import robots.src.models.Entity;
 
 import javax.swing.*;
