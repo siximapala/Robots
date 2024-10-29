@@ -1,4 +1,4 @@
-package robots.src.gui;
+package robots.src.gui.Windows;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +8,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 
 import log.LogChangeListener;
+import robots.src.gui.MainApplicationFrame;
 import robots.src.log.LogEntry;
 import robots.src.log.LogWindowSource;
 

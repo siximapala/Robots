@@ -1,13 +1,16 @@
 package robots.src.models;
 
+import org.w3c.dom.ls.LSSerializer;
+
 import java.awt.*;
+import java.io.Serializable;
 
 /**
  * Класс, представляющий робота для поля игры.
  */
-public class Robot extends Entity{
+public class Robot extends Entity {
 
-    public Robot(int positionX, int positionY, double robotDirection, double maxVelocity, double maxAngularVelocity) {
+    public Robot(double positionX, double positionY, double robotDirection, double maxVelocity, double maxAngularVelocity) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.robotDirection = robotDirection;
@@ -23,7 +26,6 @@ public class Robot extends Entity{
         this.positionX = p.x;
         this.positionY = p.y;
     }
-
 
     public double getRobotDirection(){
         return this.robotDirection;

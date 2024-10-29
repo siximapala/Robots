@@ -17,6 +17,10 @@ import java.util.Properties;
 
 import javax.swing.*;
 
+import robots.src.gui.Windows.ClassLoaderRobotWindow;
+import robots.src.gui.Windows.CoordinatesWindow;
+import robots.src.gui.Windows.GameWindow;
+import robots.src.gui.Windows.LogWindow;
 import robots.src.log.Logger;
 
 import static javax.swing.UIManager.setLookAndFeel;
@@ -25,7 +29,9 @@ import static javax.swing.UIManager.setLookAndFeel;
 public class MainApplicationFrame extends JFrame {
     private static ResourceBundle defaultBundle = ResourceBundle.getBundle("robots.resources.lang");
 
-    private CoordinatesWindow coordinatesWindow;
+    private final CoordinatesWindow coordinatesWindow;
+
+    private final ClassLoaderRobotWindow classLoaderUploaderWindow;
     private TestsMenu testsMenu;
     private LookAndFeelMenu lookAndFeelMenu;
     private LanguageMenu languageMenu;
@@ -57,6 +63,10 @@ public class MainApplicationFrame extends JFrame {
         coordinatesWindow.setSize(400, 400);
         addWindow(coordinatesWindow);
 
+        this.classLoaderUploaderWindow = new ClassLoaderRobotWindow(gameWindow);
+        classLoaderUploaderWindow.setSize(400,100);
+        addWindow(classLoaderUploaderWindow);
+
         setJMenuBar(generateMenuBar());
 
 
@@ -78,7 +88,7 @@ public class MainApplicationFrame extends JFrame {
      * ПерсональнаяЗадачаКоптелов
      * Сохраняет состояния внутренних окон в файл свойств.
      */
-    private void saveWindowState() {
+    public void saveWindowState() {
         Properties properties = new Properties();
         try (FileOutputStream fos = new FileOutputStream("robots/resources/window_state.properties")) {
             for (JInternalFrame internalFrame : desktopPane.getAllFrames()) {
@@ -347,8 +357,8 @@ public class MainApplicationFrame extends JFrame {
         for (JInternalFrame frame : frames) {
             Class<?> clazz = frame.getClass();
             String className = clazz.getSimpleName() + "FrameText";
-            if (MainApplicationFrame.getResourceBundle().containsKey(className)) {
-                frame.setTitle(MainApplicationFrame.getResourceBundle().getString(className));
+            if (getResourceBundle().containsKey(className)) {
+                frame.setTitle(getResourceBundle().getString(className));
             }
         }
 

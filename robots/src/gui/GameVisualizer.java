@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 public class GameVisualizer extends JPanel
 {
 
-    private final GameMovementModelling gameMovementModelling = new GameMovementModelling();
+    private GameMovementModelling gameMovementModelling = new GameMovementModelling();
     private final Timer m_timer = initTimer();
     
     private static Timer initTimer() 
@@ -25,6 +25,37 @@ public class GameVisualizer extends JPanel
     }
     
     public GameVisualizer()
+    {
+
+        m_timer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                onRedrawEvent();
+            }
+        }, 0, 50);
+        m_timer.schedule(new TimerTask()
+        {
+            @Override
+            public void run()
+            {
+                gameMovementModelling.onModelUpdateEvent();
+            }
+        }, 0, 10);
+        addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                gameMovementModelling.getTarget().setTargetPosition(e.getPoint());
+                repaint();
+            }
+        });
+        setDoubleBuffered(true);
+    }
+
+    public GameVisualizer(GameMovementModelling gameMovementModelling)
     {
 
         m_timer.schedule(new TimerTask()
